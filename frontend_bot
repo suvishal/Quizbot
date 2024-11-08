@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Quiz Chatbot</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        .question { margin: 20px 0; }
+        .options button { margin-right: 10px; }
+    </style>
+</head>
+<body>
+    <h1>Quiz Chatbot</h1>
+    <div id="quiz-container">
+        <div class="question" id="question"></div>
+        <div class="options">
+            <button onclick="submitAnswer('A')" id="option_a"></button>
+            <button onclick="submitAnswer('B')" id="option_b"></button>
+            <button onclick="submitAnswer('C')" id="option_c"></button>
+            <button onclick="submitAnswer('D')" id="option_d"></button>
+        </div>
+        <div id="result"></div>
+        <button onclick="getQuestion()">Next Question</button>
+    </div>
+
+    <script>
+        function getQuestion() {
+            fetch('/get_question')
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('question').innerText = data.question;
+                    document.getElementById('option_a').innerText = data.options.A;
+                    document.getElementById('option_b').innerText = data.options.B;
+                    document.getElementById('option_c').innerText = data.options.C;
+                    document.getElementById('option_d').innerText = data.options.D;
+                    document.getElementById('result').innerText = '';
+                });
+        }
+
+        function submitAnswer(option) {
+            const questionId = document.getElementById('question').dataset.id;
+            fetch('/check_answer', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ id: questionId, selected_option: option })
+            })
+            .then(response => response.json())
+            .then(data => {
+                const result = data.is_correct ? 'Correct!' : 'Incorrect!';
+                document.getElementById('result').innerText = result;
+            });
+        }
+
+        window.onload = getQuestion;
+    </script>
+</body>
+</html>
