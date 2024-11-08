@@ -1,0 +1,35 @@
+-- Create the questions table
+CREATE TABLE questions (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    question TEXT NOT NULL,
+    option_a TEXT NOT NULL,
+    option_b TEXT NOT NULL,
+    option_c TEXT NOT NULL,
+    option_d TEXT NOT NULL,
+    correct_option CHAR(1) NOT NULL
+);
+
+-- Insert expanded sample data into the questions table
+INSERT INTO questions (question, option_a, option_b, option_c, option_d, correct_option) VALUES
+('What is the capital of France?', 'Berlin', 'Madrid', 'Paris', 'Rome', 'C'),
+('What is 2 + 2?', '3', '4', '5', '6', 'B'),
+('Which planet is known as the Red Planet?', 'Earth', 'Mars', 'Jupiter', 'Saturn', 'B'),
+('Who wrote "To Kill a Mockingbird"?', 'Harper Lee', 'J.K. Rowling', 'Ernest Hemingway', 'Mark Twain', 'A'),
+('What is the largest ocean on Earth?', 'Atlantic Ocean', 'Indian Ocean', 'Arctic Ocean', 'Pacific Ocean', 'D'),
+('Who developed the theory of relativity?', 'Isaac Newton', 'Albert Einstein', 'Nikola Tesla', 'Galileo Galilei', 'B'),
+('What is the boiling point of water?', '90°C', '100°C', '110°C', '120°C', 'B'),
+('What is the square root of 64?', '6', '7', '8', '9', 'C'),
+('Who painted the Mona Lisa?', 'Vincent van Gogh', 'Claude Monet', 'Leonardo da Vinci', 'Pablo Picasso', 'C'),
+('What is the smallest country in the world?', 'Monaco', 'Vatican City', 'Malta', 'San Marino', 'B'),
+('Who discovered penicillin?', 'Alexander Fleming', 'Marie Curie', 'Louis Pasteur', 'Gregor Mendel', 'A'),
+('What is the capital of Japan?', 'Seoul', 'Beijing', 'Tokyo', 'Bangkok', 'C'),
+('Which element has the chemical symbol O?', 'Oxygen', 'Gold', 'Iron', 'Silver', 'A'),
+('Who is the author of "1984"?', 'George Orwell', 'Aldous Huxley', 'Ray Bradbury', 'J.D. Salinger', 'A'),
+('What is the largest planet in our solar system?', 'Earth', 'Jupiter', 'Saturn', 'Neptune', 'B'),
+('What is the longest river in the world?', 'Amazon', 'Nile', 'Yangtze', 'Mississippi', 'B'),
+('Who was the first president of the United States?', 'Thomas Jefferson', 'John Adams', 'George Washington', 'James Madison', 'C'),
+('What is the hardest natural substance on Earth?', 'Gold', 'Iron', 'Diamond', 'Platinum', 'C'),
+('Which country is known as the Land of the Rising Sun?', 'China', 'South Korea', 'Japan', 'Thailand', 'C'),
+('What is the chemical formula for water?', 'H2O', 'CO2', 'O2', 'NaCl', 'A');
+
+-- Feel free to add more questions as needed
